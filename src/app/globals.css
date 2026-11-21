@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+.dark {
+  --color-bg: 10 11 14;
+  --color-surface: 18 20 26;
+  --color-elevated: 27 30 39;
+  --color-ink: 244 244 240;
+  --color-muted: 146 152 164;
+  --color-line: 38 42 54;
+  --color-signal: 225 59 43;
+  --color-signal-hover: 242 75 58;
+  --color-champagne: 201 185 155;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  --space-section-sm: 4.5rem;
+  --space-section-lg: 7rem;
+}
+
+.light {
+  --color-bg: 245 245 242;
+  --color-surface: 255 255 255;
+  --color-elevated: 234 235 230;
+  --color-ink: 14 16 21;
+  --color-muted: 96 102 114;
+  --color-line: 218 220 214;
+  --color-signal: 208 47 32;
+  --color-signal-hover: 184 39 25;
+  --color-champagne: 116 96 60;
+}
+
+@layer base {
+  html {
+    background-color: rgb(var(--color-bg));
+    color: rgb(var(--color-ink));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: rgb(var(--color-bg));
+    color: rgb(var(--color-ink));
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgb(var(--color-signal));
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-signal));
+    outline-offset: 2px;
+  }
+
+  /* Keep browser autofill styling aligned with dark/light theme tokens */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-text-fill-color: rgb(var(--color-ink));
+    -webkit-box-shadow: 0 0 0 1000px rgb(var(--color-surface)) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+@layer utilities {
+  .kicker {
+    @apply font-mono text-[11px] uppercase tracking-[0.22em] text-champagne;
+  }
+
+  .panel {
+    @apply border border-line bg-surface;
+  }
+
+  .panel-elevated {
+    @apply border border-line bg-elevated;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--color-bg));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-line));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-muted));
+}

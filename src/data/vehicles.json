@@ -1,0 +1,716 @@
+[
+  {
+    "id": "syr-001",
+    "make": "Porsche",
+    "model": "911 Carrera Cabriolet",
+    "year": 2023,
+    "price": 154500,
+    "mileage": 6800,
+    "fuel": "Petrol",
+    "transmission": "Dual-Clutch",
+    "bodyType": "Convertible",
+    "color": "Shade Green Metallic",
+    "location": "Berlin, Germany",
+    "images": [
+      "/cars/porsche/911/992/1.webp",
+      "/cars/porsche/911/992/3.webp"
+    ],
+    "specs": {
+      "engine": "3.0L Twin-Turbo Flat-6",
+      "horsepower": 379,
+      "torque": "450 Nm",
+      "zeroToSixty": "4.0s",
+      "drivetrain": "RWD",
+      "seats": 4,
+      "doors": 2,
+      "vin": "WP0CA2A99PS221401"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-28T10:00:00.000Z"
+  },
+  {
+    "id": "syr-002",
+    "make": "Mercedes-Benz",
+    "model": "AMG GT",
+    "year": 2024,
+    "price": 179000,
+    "mileage": 3200,
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "bodyType": "Coupe",
+    "color": "Alpine Grey",
+    "location": "Munich, Germany",
+    "images": [
+      "/cars/mercedes-benz/amg-gt/c192/1.webp",
+      "/cars/mercedes-benz/amg-gt/c192/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "4.0L Biturbo V8",
+      "horsepower": 577,
+      "torque": "800 Nm",
+      "zeroToSixty": "3.1s",
+      "drivetrain": "AWD",
+      "seats": 4,
+      "doors": 2,
+      "vin": "W1K7X8KB6RA014202"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-27T10:00:00.000Z"
+  },
+  {
+    "id": "syr-003",
+    "make": "Audi",
+    "model": "R8 V10 Performance",
+    "year": 2019,
+    "price": 189000,
+    "mileage": 11400,
+    "fuel": "Petrol",
+    "transmission": "Dual-Clutch",
+    "bodyType": "Sports",
+    "color": "Ascari Blue",
+    "location": "New York, USA",
+    "images": [
+      "/cars/audi/r8/4s/1.webp",
+      "/cars/audi/r8/4s/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "5.2L Naturally Aspirated V10",
+      "horsepower": 602,
+      "torque": "560 Nm",
+      "zeroToSixty": "3.2s",
+      "drivetrain": "AWD",
+      "seats": 2,
+      "doors": 2,
+      "vin": "WUABAAFX0K7901403"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-26T10:00:00.000Z"
+  },
+  {
+    "id": "syr-004",
+    "make": "Ferrari",
+    "model": "488 GTB",
+    "year": 2018,
+    "price": 268000,
+    "mileage": 9600,
+    "fuel": "Petrol",
+    "transmission": "Dual-Clutch",
+    "bodyType": "Sports",
+    "color": "Rosso Corsa",
+    "location": "London, UK",
+    "images": [
+      "/cars/ferrari/488-gtb/2018/1.webp",
+      "/cars/ferrari/488-gtb/2018/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "3.9L Twin-Turbo V8",
+      "horsepower": 661,
+      "torque": "760 Nm",
+      "zeroToSixty": "3.0s",
+      "drivetrain": "RWD",
+      "seats": 2,
+      "doors": 2,
+      "vin": "ZFF79ALA9J0231404"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-25T10:00:00.000Z"
+  },
+  {
+    "id": "syr-005",
+    "make": "Lamborghini",
+    "model": "Huracan Performante",
+    "year": 2019,
+    "price": 294000,
+    "mileage": 7900,
+    "fuel": "Petrol",
+    "transmission": "Dual-Clutch",
+    "bodyType": "Sports",
+    "color": "Bianco Monocerus",
+    "location": "Zurich, Switzerland",
+    "images": [
+      "/cars/lamborghini/huracan/evo/1.webp",
+      "/cars/lamborghini/huracan/evo/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "5.2L Naturally Aspirated V10",
+      "horsepower": 631,
+      "torque": "600 Nm",
+      "zeroToSixty": "2.9s",
+      "drivetrain": "AWD",
+      "seats": 2,
+      "doors": 2,
+      "vin": "ZHWUC4ZF1KLA12405"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-24T10:00:00.000Z"
+  },
+  {
+    "id": "syr-006",
+    "make": "Aston Martin",
+    "model": "V12 Vantage",
+    "year": 2015,
+    "price": 118500,
+    "mileage": 21500,
+    "fuel": "Petrol",
+    "transmission": "Manual",
+    "bodyType": "Coupe",
+    "color": "Quantum Silver",
+    "location": "London, UK",
+    "images": [
+      "/cars/aston-martin/vantage/vh/1.webp",
+      "/cars/aston-martin/vantage/vh/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "5.9L Naturally Aspirated V12",
+      "horsepower": 565,
+      "torque": "620 Nm",
+      "zeroToSixty": "3.7s",
+      "drivetrain": "RWD",
+      "seats": 2,
+      "doors": 2,
+      "vin": "SCFEKBCR5FGS01406"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-23T10:00:00.000Z"
+  },
+  {
+    "id": "syr-007",
+    "make": "McLaren",
+    "model": "720S",
+    "year": 2020,
+    "price": 259000,
+    "mileage": 8400,
+    "fuel": "Petrol",
+    "transmission": "Dual-Clutch",
+    "bodyType": "Sports",
+    "color": "Sarigan Quartz",
+    "location": "Dubai, UAE",
+    "images": [
+      "/cars/mclaren/720s/2020/1.webp"
+    ],
+    "specs": {
+      "engine": "4.0L Twin-Turbo V8",
+      "horsepower": 710,
+      "torque": "770 Nm",
+      "zeroToSixty": "2.8s",
+      "drivetrain": "RWD",
+      "seats": 2,
+      "doors": 2,
+      "vin": "SBM14DCA8LW004407"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-22T10:00:00.000Z"
+  },
+  {
+    "id": "syr-008",
+    "make": "Porsche",
+    "model": "Taycan Cross Turismo",
+    "year": 2023,
+    "price": 124000,
+    "mileage": 9200,
+    "fuel": "Electric",
+    "transmission": "Automatic",
+    "bodyType": "Hatchback",
+    "color": "Chalk",
+    "location": "Stockholm, Sweden",
+    "images": [
+      "/cars/porsche/taycan/j1/1.webp",
+      "/cars/porsche/taycan/j1/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "Dual Permanent-Magnet Electric",
+      "horsepower": 469,
+      "torque": "500 Nm",
+      "zeroToSixty": "4.8s",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "doors": 4,
+      "vin": "WP0BB2Y14PSA61408"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-21T10:00:00.000Z"
+  },
+  {
+    "id": "syr-009",
+    "make": "Tesla",
+    "model": "Model S",
+    "year": 2023,
+    "price": 79500,
+    "mileage": 14800,
+    "fuel": "Electric",
+    "transmission": "Automatic",
+    "bodyType": "Sedan",
+    "color": "Pearl White Multi-Coat",
+    "location": "San Francisco, USA",
+    "images": [
+      "/cars/tesla/model-s/2022/1.webp",
+      "/cars/tesla/model-s/2022/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "Dual-Motor Electric",
+      "horsepower": 670,
+      "torque": "840 Nm",
+      "zeroToSixty": "3.1s",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "doors": 4,
+      "vin": "5YJSA1E55PF511409"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-20T10:00:00.000Z"
+  },
+  {
+    "id": "syr-010",
+    "make": "Rivian",
+    "model": "R1S",
+    "year": 2024,
+    "price": 88900,
+    "mileage": 7400,
+    "fuel": "Electric",
+    "transmission": "Automatic",
+    "bodyType": "SUV",
+    "color": "Limestone",
+    "location": "New York, USA",
+    "images": [
+      "/cars/rivian/r1s/2023/1.webp"
+    ],
+    "specs": {
+      "engine": "Quad-Motor Electric",
+      "horsepower": 835,
+      "torque": "1231 Nm",
+      "zeroToSixty": "3.0s",
+      "drivetrain": "AWD",
+      "seats": 7,
+      "doors": 4,
+      "vin": "7PDSGABA8RN031410"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-19T10:00:00.000Z"
+  },
+  {
+    "id": "syr-011",
+    "make": "Lucid",
+    "model": "Air",
+    "year": 2023,
+    "price": 94000,
+    "mileage": 6100,
+    "fuel": "Electric",
+    "transmission": "Automatic",
+    "bodyType": "Sedan",
+    "color": "Zenith Red",
+    "location": "Los Angeles, USA",
+    "images": [
+      "/cars/lucid/air/2023/1.webp"
+    ],
+    "specs": {
+      "engine": "Dual-Motor Electric",
+      "horsepower": 620,
+      "torque": "1200 Nm",
+      "zeroToSixty": "3.4s",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "doors": 4,
+      "vin": "50EA1GBA3PA011411"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-18T10:00:00.000Z"
+  },
+  {
+    "id": "syr-012",
+    "make": "Land Rover",
+    "model": "Range Rover",
+    "year": 2023,
+    "price": 142000,
+    "mileage": 10200,
+    "fuel": "Hybrid",
+    "transmission": "Automatic",
+    "bodyType": "SUV",
+    "color": "Ostuni Pearl White",
+    "location": "London, UK",
+    "images": [
+      "/cars/land-rover/range-rover/l460/1.webp"
+    ],
+    "specs": {
+      "engine": "3.0L Inline-6 Plug-In Hybrid",
+      "horsepower": 434,
+      "torque": "620 Nm",
+      "zeroToSixty": "5.5s",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "doors": 4,
+      "vin": "SALKP9E72PA041412"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-17T10:00:00.000Z"
+  },
+  {
+    "id": "syr-013",
+    "make": "Porsche",
+    "model": "Cayenne S Hybrid",
+    "year": 2013,
+    "price": 34500,
+    "mileage": 78400,
+    "fuel": "Hybrid",
+    "transmission": "Automatic",
+    "bodyType": "SUV",
+    "color": "Carrara White",
+    "location": "Amsterdam, Netherlands",
+    "images": [
+      "/cars/porsche/cayenne/958/1.webp",
+      "/cars/porsche/cayenne/958/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "3.0L Supercharged V6 Hybrid",
+      "horsepower": 380,
+      "torque": "580 Nm",
+      "zeroToSixty": "6.1s",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "doors": 4,
+      "vin": "WP1AE2A26DLA81413"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-16T10:00:00.000Z"
+  },
+  {
+    "id": "syr-014",
+    "make": "BMW",
+    "model": "X5 xDrive40i",
+    "year": 2024,
+    "price": 74800,
+    "mileage": 8900,
+    "fuel": "Hybrid",
+    "transmission": "Automatic",
+    "bodyType": "SUV",
+    "color": "Blue Ridge Mountain",
+    "location": "Toronto, Canada",
+    "images": [
+      "/cars/bmw/x5/g05/1.webp",
+      "/cars/bmw/x5/g05/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "3.0L Turbo Inline-6 Mild Hybrid",
+      "horsepower": 375,
+      "torque": "540 Nm",
+      "zeroToSixty": "5.2s",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "doors": 4,
+      "vin": "5UX23EU07R9T11414"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-15T10:00:00.000Z"
+  },
+  {
+    "id": "syr-015",
+    "make": "Lexus",
+    "model": "LC 500",
+    "year": 2022,
+    "price": 96500,
+    "mileage": 12300,
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "bodyType": "Coupe",
+    "color": "Infrared",
+    "location": "Tokyo, Japan",
+    "images": [
+      "/cars/lexus/lc-500/ur100/1.webp",
+      "/cars/lexus/lc-500/ur100/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "5.0L Naturally Aspirated V8",
+      "horsepower": 471,
+      "torque": "540 Nm",
+      "zeroToSixty": "4.4s",
+      "drivetrain": "RWD",
+      "seats": 4,
+      "doors": 2,
+      "vin": "JTHHP5AY6NA101415"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-14T10:00:00.000Z"
+  },
+  {
+    "id": "syr-016",
+    "make": "Nissan",
+    "model": "GT-R",
+    "year": 2018,
+    "price": 114000,
+    "mileage": 19800,
+    "fuel": "Petrol",
+    "transmission": "Dual-Clutch",
+    "bodyType": "Coupe",
+    "color": "Pearl White",
+    "location": "Singapore",
+    "images": [
+      "/cars/nissan/gt-r/r35/1.webp",
+      "/cars/nissan/gt-r/r35/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "3.8L Twin-Turbo V6",
+      "horsepower": 565,
+      "torque": "633 Nm",
+      "zeroToSixty": "2.9s",
+      "drivetrain": "AWD",
+      "seats": 4,
+      "doors": 2,
+      "vin": "JN1AR5EF4JM271416"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-13T10:00:00.000Z"
+  },
+  {
+    "id": "syr-017",
+    "make": "Ford",
+    "model": "Mustang GT",
+    "year": 2024,
+    "price": 51200,
+    "mileage": 2900,
+    "fuel": "Petrol",
+    "transmission": "Manual",
+    "bodyType": "Coupe",
+    "color": "Race Red",
+    "location": "Austin, USA",
+    "images": [
+      "/cars/ford/mustang/s650/1.webp",
+      "/cars/ford/mustang/s650/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "5.0L Coyote V8",
+      "horsepower": 480,
+      "torque": "563 Nm",
+      "zeroToSixty": "4.2s",
+      "drivetrain": "RWD",
+      "seats": 4,
+      "doors": 2,
+      "vin": "1FA6P8CF7R5401417"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-12T10:00:00.000Z"
+  },
+  {
+    "id": "syr-018",
+    "make": "Ford",
+    "model": "F-150 Raptor",
+    "year": 2019,
+    "price": 61500,
+    "mileage": 44200,
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "bodyType": "Truck",
+    "color": "Ford Performance Blue",
+    "location": "Denver, USA",
+    "images": [
+      "/cars/ford/f-150-raptor/2019/1.webp",
+      "/cars/ford/f-150-raptor/2019/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "3.5L EcoBoost Twin-Turbo V6",
+      "horsepower": 450,
+      "torque": "691 Nm",
+      "zeroToSixty": "5.1s",
+      "drivetrain": "4WD",
+      "seats": 5,
+      "doors": 4,
+      "vin": "1FTFW1RG9KFA21418"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-11T10:00:00.000Z"
+  },
+  {
+    "id": "syr-019",
+    "make": "Porsche",
+    "model": "718 Boxster",
+    "year": 2022,
+    "price": 78900,
+    "mileage": 11200,
+    "fuel": "Petrol",
+    "transmission": "Dual-Clutch",
+    "bodyType": "Convertible",
+    "color": "Shark Blue",
+    "location": "Paris, France",
+    "images": [
+      "/cars/porsche/718-boxster/982/1.webp",
+      "/cars/porsche/718-boxster/982/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "2.0L Turbo Flat-4",
+      "horsepower": 300,
+      "torque": "380 Nm",
+      "zeroToSixty": "4.7s",
+      "drivetrain": "RWD",
+      "seats": 2,
+      "doors": 2,
+      "vin": "WP0CA2A89NS211419"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-10T10:00:00.000Z"
+  },
+  {
+    "id": "syr-020",
+    "make": "Mazda",
+    "model": "MX-5",
+    "year": 2022,
+    "price": 31900,
+    "mileage": 16400,
+    "fuel": "Petrol",
+    "transmission": "Manual",
+    "bodyType": "Convertible",
+    "color": "Eternal Blue Mica",
+    "location": "Sydney, Australia",
+    "images": [
+      "/cars/mazda/mx-5/nd/1.webp",
+      "/cars/mazda/mx-5/nd/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "2.0L Skyactiv-G Inline-4",
+      "horsepower": 181,
+      "torque": "205 Nm",
+      "zeroToSixty": "5.7s",
+      "drivetrain": "RWD",
+      "seats": 2,
+      "doors": 2,
+      "vin": "JM1NDAC76N0511420"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-09T10:00:00.000Z"
+  },
+  {
+    "id": "syr-021",
+    "make": "BMW",
+    "model": "M3 Competition",
+    "year": 2023,
+    "price": 89400,
+    "mileage": 9800,
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "bodyType": "Sedan",
+    "color": "Brooklyn Grey Metallic",
+    "location": "Zurich, Switzerland",
+    "images": [
+      "/cars/bmw/m3/g80/1.webp"
+    ],
+    "specs": {
+      "engine": "3.0L Twin-Turbo Inline-6",
+      "horsepower": 503,
+      "torque": "650 Nm",
+      "zeroToSixty": "3.4s",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "doors": 4,
+      "vin": "WBS43AY05PFN11421"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-08T10:00:00.000Z"
+  },
+  {
+    "id": "syr-022",
+    "make": "Mercedes-Benz",
+    "model": "AMG G 63",
+    "year": 2017,
+    "price": 129000,
+    "mileage": 38500,
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "bodyType": "SUV",
+    "color": "Emerald Green Metallic",
+    "location": "Dubai, UAE",
+    "images": [
+      "/cars/mercedes-benz/g-class/w463/1.webp",
+      "/cars/mercedes-benz/g-class/w463/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "5.5L Biturbo V8",
+      "horsepower": 563,
+      "torque": "760 Nm",
+      "zeroToSixty": "5.3s",
+      "drivetrain": "4WD",
+      "seats": 5,
+      "doors": 4,
+      "vin": "WDCYC7DF2HX271422"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-07T10:00:00.000Z"
+  },
+  {
+    "id": "syr-023",
+    "make": "Toyota",
+    "model": "Land Cruiser 80 Series",
+    "year": 1995,
+    "price": 42000,
+    "mileage": 168000,
+    "fuel": "Diesel",
+    "transmission": "Manual",
+    "bodyType": "SUV",
+    "color": "Alpine White",
+    "location": "Melbourne, Australia",
+    "images": [
+      "/cars/toyota/land-cruiser/j80/1.webp"
+    ],
+    "specs": {
+      "engine": "4.2L Inline-6 Turbo Diesel",
+      "horsepower": 170,
+      "torque": "380 Nm",
+      "zeroToSixty": "11.5s",
+      "drivetrain": "4WD",
+      "seats": 7,
+      "doors": 4,
+      "vin": "JT111TJ8007011423"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-06T10:00:00.000Z"
+  },
+  {
+    "id": "syr-024",
+    "make": "Volkswagen",
+    "model": "Golf GTI",
+    "year": 2023,
+    "price": 36800,
+    "mileage": 12700,
+    "fuel": "Petrol",
+    "transmission": "Dual-Clutch",
+    "bodyType": "Hatchback",
+    "color": "Deep Black Pearl",
+    "location": "Berlin, Germany",
+    "images": [
+      "/cars/volkswagen/golf-gti/mk8/1.webp",
+      "/cars/volkswagen/golf-gti/mk8/interior-1.webp"
+    ],
+    "specs": {
+      "engine": "2.0L TSI Turbo Inline-4",
+      "horsepower": 241,
+      "torque": "370 Nm",
+      "zeroToSixty": "5.8s",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "doors": 4,
+      "vin": "WVWCD7CD4PW111424"
+    },
+    "sellerId": "sayara-verified-network",
+    "status": "active",
+    "createdAt": "2026-10-05T10:00:00.000Z"
+  }
+]
