@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,7 +11,6 @@ import {
   Compass,
   GitCompareArrows,
   Layers,
-  RotateCcw,
   Send,
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
@@ -350,8 +349,8 @@ export function LandingShowpiece() {
     };
   }, [heroRevealed, prefs.reducedMotion, videoFailed]);
 
-  // Slide-in hero typography once the intro video completes
-  useEffect(() => {
+  // Slide-in hero typography once the intro video completes (useLayoutEffect avoids any 1-frame flash)
+  useLayoutEffect(() => {
     if (!heroRevealed || !rootRef.current) return;
 
     const prefersReduced =
@@ -398,14 +397,6 @@ export function LandingShowpiece() {
 
     return () => ctx.revert();
   }, [heroRevealed, prefs.reducedMotion]);
-
-  const handleReplayIntro = () => {
-    const video = heroVideoRef.current;
-    if (!video) return;
-    setHeroRevealed(false);
-    video.currentTime = 0;
-    video.play().catch(() => setHeroRevealed(true));
-  };
 
   // Subtle mouse parallax on full-bleed hero photograph
   useEffect(() => {
@@ -501,7 +492,7 @@ export function LandingShowpiece() {
             )}
           >
             <div className="my-auto max-w-3xl pb-8">
-              <p className="hero-fade hero-reveal font-mono text-[11px] uppercase tracking-[0.24em] text-champagne">
+              <p className="hero-fade hero-reveal opacity-0 font-mono text-[11px] uppercase tracking-[0.24em] text-champagne">
                 Automotive Discovery · Global Marketplace
               </p>
 
@@ -509,17 +500,17 @@ export function LandingShowpiece() {
               <h1 className="mt-4 font-display text-display-xl font-bold tracking-tight text-white">
                 {["Machines", "Built", "For", "Drivers."].map((word) => (
                   <span key={word} className="mr-[0.22em] inline-block overflow-hidden align-bottom">
-                    <span className="hero-word hero-reveal inline-block">{word}</span>
+                    <span className="hero-word hero-reveal opacity-0 inline-block">{word}</span>
                   </span>
                 ))}
               </h1>
 
-              <p className="hero-fade hero-reveal mt-5 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
+              <p className="hero-fade hero-reveal opacity-0 mt-5 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
                 Discover, compare, and acquire curated performance cars, luxury SUVs, and electric
                 flagships across international markets — every photograph visually verified.
               </p>
 
-              <div className="hero-fade hero-reveal mt-8 flex flex-wrap items-center gap-4">
+              <div className="hero-fade hero-reveal opacity-0 mt-8 flex flex-wrap items-center gap-4">
                 <MagneticButton href="/browse" variant="primary">
                   <span>Explore Inventory</span>
                   <ArrowRight className="h-4 w-4" />
@@ -531,7 +522,7 @@ export function LandingShowpiece() {
             </div>
 
             {/* Hero Showroom Telemetry Bar */}
-            <div className="hero-fade hero-reveal mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-white/15 pt-5 text-xs text-white/75">
+            <div className="hero-fade hero-reveal opacity-0 mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-white/15 pt-5 text-xs text-white/75">
               <div className="flex items-center gap-3">
                 <span className="h-2 w-2 rounded-full bg-signal" />
                 <span className="font-mono uppercase tracking-[0.16em]">
@@ -541,16 +532,6 @@ export function LandingShowpiece() {
                       ? `Featured: ${heroVehicle.year} ${heroVehicle.make} ${heroVehicle.model}`
                       : "SAYARA Global Showroom"}
                 </span>
-                {!prefs.reducedMotion && !videoFailed && heroRevealed && (
-                  <button
-                    type="button"
-                    onClick={handleReplayIntro}
-                    className="inline-flex items-center gap-1 rounded-sm border border-white/15 bg-white/5 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-white/70 transition hover:border-white/35 hover:text-white"
-                  >
-                    <RotateCcw className="h-2.5 w-2.5" />
-                    <span>Replay</span>
-                  </button>
-                )}
               </div>
               <div className="flex items-center gap-4 font-mono">
                 <span className="text-champagne">{activeVehicles.length} Verified Vehicles</span>
