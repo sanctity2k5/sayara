@@ -11,11 +11,13 @@ import {
   Compass,
   GitCompareArrows,
   Layers,
+  RotateCcw,
   Send,
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { VehicleImage } from "@/components/ui/VehicleImage";
+import { AmbientVideo } from "@/components/ui/AmbientVideo";
 import { MagneticButton } from "@/components/home/MagneticButton";
 import { useSayaraStore } from "@/store/useSayaraStore";
 import { selectActiveVehicles } from "@/store/selectors";
@@ -125,11 +127,14 @@ interface StatItem {
 export function LandingShowpiece() {
   const rootRef = useRef<HTMLDivElement>(null);
   const heroBgRef = useRef<HTMLDivElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
   const pinnedSectionRef = useRef<HTMLElement>(null);
   const horizontalSectionRef = useRef<HTMLElement>(null);
   const horizontalTrackRef = useRef<HTMLDivElement>(null);
 
   const [activeStage, setActiveStage] = useState(0);
+  const [videoFailed, setVideoFailed] = useState(false);
+  const [heroRevealed, setHeroRevealed] = useState(false);
 
   const activeVehicles = useSayaraStore(selectActiveVehicles);
   const prefs = useSayaraStore((s) => s.preferences);
@@ -186,36 +191,10 @@ export function LandingShowpiece() {
 
     const ctx = gsap.context(() => {
       if (prefersReduced) {
-        // Fade-only fallback when prefers-reduced-motion is active
-        gsap.from(".hero-reveal", {
-          opacity: 0,
-          duration: 0.5,
-          stagger: 0.08,
-          ease: "power2.out",
-        });
         return;
       }
 
-      // 1. Split-text headline & hero intro reveal
-      gsap.from(".hero-word", {
-        yPercent: 110,
-        opacity: 0,
-        duration: 0.95,
-        stagger: 0.09,
-        ease: "power4.out",
-        delay: 0.1,
-      });
-
-      gsap.from(".hero-fade", {
-        y: 22,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-        delay: 0.45,
-      });
-
-      // 2. Brand marquee infinite scroll
+      // 1. Brand marquee infinite scroll
       gsap.to(".marquee-track", {
         xPercent: -50,
         duration: 32,
@@ -331,6 +310,103 @@ export function LandingShowpiece() {
     };
   }, [prefs.reducedMotion]);
 
+  // Auto-reveal hero copy if reduced motion, video failure, autoplay block, scroll, or safety timeout
+  useEffect(() => {
+    const prefersReduced =
+      prefs.reducedMotion ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReduced || videoFailed) {
+      setHeroRevealed(true);
+      return;
+    }
+
+    if (heroRevealed) return;
+
+    const video = heroVideoRef.current;
+    if (video) {
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {
+          setHeroRevealed(true);
+        });
+      }
+    }
+
+    const onScroll = () => {
+      if (window.scrollY > 40) {
+        setHeroRevealed(true);
+      }
+    };
+
+    const fallbackTimer = window.setTimeout(() => {
+      setHeroRevealed(true);
+    }, 10500);
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.clearTimeout(fallbackTimer);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [heroRevealed, prefs.reducedMotion, videoFailed]);
+
+  // Slide-in hero typography once the intro video completes
+  useEffect(() => {
+    if (!heroRevealed || !rootRef.current) return;
+
+    const prefersReduced =
+      prefs.reducedMotion ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const ctx = gsap.context(() => {
+      if (prefersReduced) {
+        gsap.fromTo(
+          ".hero-reveal",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.45, stagger: 0.06, ease: "power2.out" }
+        );
+        return;
+      }
+
+      gsap.fromTo(
+        ".hero-word",
+        { x: -32, yPercent: 105, opacity: 0 },
+        {
+          x: 0,
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.95,
+          stagger: 0.08,
+          ease: "power4.out",
+          delay: 0.08,
+        }
+      );
+
+      gsap.fromTo(
+        ".hero-fade",
+        { x: -28, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.85,
+          stagger: 0.1,
+          ease: "power3.out",
+          delay: 0.25,
+        }
+      );
+    }, rootRef.current);
+
+    return () => ctx.revert();
+  }, [heroRevealed, prefs.reducedMotion]);
+
+  const handleReplayIntro = () => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+    setHeroRevealed(false);
+    video.currentTime = 0;
+    video.play().catch(() => setHeroRevealed(true));
+  };
+
   // Subtle mouse parallax on full-bleed hero photograph
   useEffect(() => {
     const el = heroBgRef.current;
@@ -367,27 +443,63 @@ export function LandingShowpiece() {
       <main id="main-content">
         {/* 1. FULL-BLEED CINEMATIC HERO */}
         <section className="relative flex min-h-[calc(100svh-4rem)] flex-col justify-between overflow-hidden border-b border-line bg-[#090A0D]">
-          {/* Full-bleed verified hero photograph with subtle mouse parallax */}
+          {/* Full-bleed hero video (falls back to verified static photography on reduced motion or error) */}
           <div
             ref={heroBgRef}
             className="pointer-events-none absolute -inset-6 will-change-transform"
           >
-            {heroVehicle && (
-              <VehicleImage
-                src={heroVehicle.images[0]}
-                alt={`${heroVehicle.year} ${heroVehicle.make} ${heroVehicle.model}`}
-                sizes="100vw"
-                priority
-                className="scale-[1.04] object-cover object-center brightness-[0.72]"
-              />
+            {!prefs.reducedMotion && !videoFailed ? (
+              <video
+                ref={heroVideoRef}
+                autoPlay
+                muted
+                playsInline
+                preload="auto"
+                onEnded={() => setHeroRevealed(true)}
+                onError={() => {
+                  setVideoFailed(true);
+                  setHeroRevealed(true);
+                }}
+                className={cn(
+                  "h-full w-full scale-[1.04] object-cover object-center transition-[filter] duration-1000 ease-out",
+                  heroRevealed ? "brightness-[0.72]" : "brightness-[0.96]"
+                )}
+              >
+                <source src="/hero/hero-two.mp4" type="video/mp4" />
+              </video>
+            ) : (
+              heroVehicle && (
+                <VehicleImage
+                  src={heroVehicle.images[0]}
+                  alt={`${heroVehicle.year} ${heroVehicle.make} ${heroVehicle.model}`}
+                  sizes="100vw"
+                  priority
+                  className="scale-[1.04] object-cover object-center brightness-[0.72]"
+                />
+              )
             )}
           </div>
 
-          {/* Editorial dark vignette gradients */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#090A0D] via-[#090A0D]/50 to-black/35" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#090A0D]/90 via-[#090A0D]/40 to-transparent" />
+          {/* Editorial dark vignette gradients — soften during intro playback, deepen on text reveal */}
+          <div
+            className={cn(
+              "pointer-events-none absolute inset-0 bg-gradient-to-t from-[#090A0D] via-[#090A0D]/50 to-black/35 transition-opacity duration-1000",
+              heroRevealed ? "opacity-100" : "opacity-30"
+            )}
+          />
+          <div
+            className={cn(
+              "pointer-events-none absolute inset-0 bg-gradient-to-r from-[#090A0D]/90 via-[#090A0D]/40 to-transparent transition-opacity duration-1000",
+              heroRevealed ? "opacity-100" : "opacity-15"
+            )}
+          />
 
-          <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-between px-4 pb-10 pt-16 sm:px-6 lg:px-8 lg:pb-12 lg:pt-20">
+          <div
+            className={cn(
+              "relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-between px-4 pb-10 pt-16 sm:px-6 lg:px-8 lg:pb-12 lg:pt-20",
+              !heroRevealed && "pointer-events-none invisible"
+            )}
+          >
             <div className="my-auto max-w-3xl pb-8">
               <p className="hero-fade hero-reveal font-mono text-[11px] uppercase tracking-[0.24em] text-champagne">
                 Automotive Discovery · Global Marketplace
@@ -418,29 +530,39 @@ export function LandingShowpiece() {
               </div>
             </div>
 
-            {/* Verified Hero Vehicle Caption Pill */}
-            {heroVehicle && (
-              <div className="hero-fade hero-reveal mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-white/15 pt-5 text-xs text-white/75">
-                <div className="flex items-center gap-3">
-                  <span className="h-2 w-2 rounded-full bg-signal" />
-                  <span className="font-mono uppercase tracking-[0.16em]">
-                    Featured: {heroVehicle.year} {heroVehicle.make} {heroVehicle.model}
-                  </span>
-                </div>
-                <div className="flex items-center gap-4 font-mono">
-                  <span className="text-champagne">
-                    {formatPrice(heroVehicle.price, prefs.currency)}
-                  </span>
-                  <span>{heroVehicle.location}</span>
-                  <Link
-                    href={`/vehicle/${heroVehicle.id}`}
-                    className="text-white underline-offset-4 hover:underline"
+            {/* Hero Showroom Telemetry Bar */}
+            <div className="hero-fade hero-reveal mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-white/15 pt-5 text-xs text-white/75">
+              <div className="flex items-center gap-3">
+                <span className="h-2 w-2 rounded-full bg-signal" />
+                <span className="font-mono uppercase tracking-[0.16em]">
+                  {!prefs.reducedMotion && !videoFailed
+                    ? "Showreel: Track Supercar · 360° Studio"
+                    : heroVehicle
+                      ? `Featured: ${heroVehicle.year} ${heroVehicle.make} ${heroVehicle.model}`
+                      : "SAYARA Global Showroom"}
+                </span>
+                {!prefs.reducedMotion && !videoFailed && heroRevealed && (
+                  <button
+                    type="button"
+                    onClick={handleReplayIntro}
+                    className="inline-flex items-center gap-1 rounded-sm border border-white/15 bg-white/5 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-white/70 transition hover:border-white/35 hover:text-white"
                   >
-                    View Dossier →
-                  </Link>
-                </div>
+                    <RotateCcw className="h-2.5 w-2.5" />
+                    <span>Replay</span>
+                  </button>
+                )}
               </div>
-            )}
+              <div className="flex items-center gap-4 font-mono">
+                <span className="text-champagne">{activeVehicles.length} Verified Vehicles</span>
+                <span>{uniqueCitiesCount} Global Cities</span>
+                <Link
+                  href="/browse"
+                  className="text-white underline-offset-4 hover:underline"
+                >
+                  Browse All →
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -675,16 +797,30 @@ export function LandingShowpiece() {
         </section>
 
         {/* 7. CLOSING CTA */}
-        <section className="bg-bg py-24">
-          <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-champagne">
+        <section className="relative overflow-hidden border-t border-line bg-[#090A0D] py-28">
+          {/* Ambient rolling-motion video backdrop */}
+          <div className="pointer-events-none absolute inset-0">
+            <AmbientVideo
+              src="/hero/hero-three.mp4"
+              fallbackSrc={heroVehicle?.images[0]}
+              fallbackAlt="SAYARA rolling showcase"
+              preload="metadata"
+              className="scale-[1.03] brightness-[0.45]"
+              fallbackClassName="brightness-[0.35]"
+            />
+          </div>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#090A0D] via-[#090A0D]/55 to-[#090A0D]/80" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#090A0D]/75 via-transparent to-[#090A0D]/75" />
+
+          <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/45 px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-champagne backdrop-blur-sm">
               <CheckCircle2 className="h-3.5 w-3.5 text-signal" />
               <span>100% Verified Local Vehicle Photography</span>
             </div>
-            <h2 className="mt-5 font-display text-display-lg font-bold text-ink">
+            <h2 className="mt-5 font-display text-display-lg font-bold text-white">
               Ready to find or list your next machine?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
               Create your SAYARA account to save vehicles, manage listings, respond to buyer
               inquiries, and track pricing analytics across global markets.
             </p>
@@ -695,7 +831,7 @@ export function LandingShowpiece() {
               </MagneticButton>
               <Link
                 href="/browse"
-                className="inline-flex items-center justify-center rounded-md border border-line bg-surface px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-ink transition hover:border-ink/40"
+                className="inline-flex items-center justify-center rounded-md border border-white/25 bg-white/10 px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm transition hover:border-white/50 hover:bg-white/15"
               >
                 Browse Inventory
               </Link>

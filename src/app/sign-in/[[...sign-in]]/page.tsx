@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { isClerkConfigured } from "@/lib/utils";
 import { Navbar } from "@/components/layout/Navbar";
-import { VehicleImage } from "@/components/ui/VehicleImage";
+import { AmbientVideo } from "@/components/ui/AmbientVideo";
 import { CustomSignInForm } from "@/components/auth/CustomSignInForm";
 
 export const metadata: Metadata = {
@@ -20,18 +20,20 @@ export default function SignInPage() {
       <main id="main-content" className="grid flex-1 lg:grid-cols-12">
         {/* Left Editorial Vehicle Showcase */}
         <div className="relative hidden overflow-hidden border-r border-line bg-[#090A0D] lg:col-span-6 lg:block">
-          <VehicleImage
-            src="/cars/mercedes-benz/amg-gt/c192/1.webp"
-            alt="2024 Mercedes-Benz AMG GT"
-            sizes="50vw"
-            priority
-            className="object-center brightness-[0.68]"
+          <AmbientVideo
+            src="/hero/hero.mp4"
+            fallbackSrc="/cars/mercedes-benz/amg-gt/c192/1.webp"
+            fallbackAlt="2024 Mercedes-Benz AMG GT"
+            fallbackSizes="50vw"
+            preload="auto"
+            className="brightness-[0.72]"
+            fallbackClassName="brightness-[0.68]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#090A0D] via-[#090A0D]/35 to-black/20" />
           <div className="absolute inset-x-0 bottom-0 pb-14 pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pr-10 pt-20 text-white">
             <div className="max-w-md border-l-2 border-signal pl-5">
               <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-champagne">
-                2024 Mercedes-Benz AMG GT · Munich, Germany
+                SAYARA Pavilion · Private Arrival
               </p>
               <h2 className="mt-2.5 font-display text-3xl font-bold leading-[1.12]">
                 Your private automotive workspace awaits.
